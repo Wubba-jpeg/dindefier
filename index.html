@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>YOU HAVE BEEN DINDE!!!! RUN!!!!</title>
+</head>
+<body>
+    <form id=undindeinput>
+        <input 
+type=text
+ id=sentence
+ placeholder='enter sentence'>
+        <button type="button" 
+onclick=dinde()
+>dindify</button>
+    </form>
+    <div id=output></div>
+    <button 
+onclick=copyOutput()>copy dinde</button>
+    <p id = dindemsg></p>
+    <script>
+    // absoluiute dinde
+    function dinde() {
+        // get what user typed
+        let text = document.getElementById('sentence').value;
+        let box = document.getElementById('output');
+        
+        // dont do anything if empty
+        if(text == '') {
+            box.innerText = 'you did not give anything for me to dinde-ify... why would you betray me like this!!!!!';
+            return;
+        }
+        
+        // split into words
+        let words = text.split(' ');
+        let result = [];
+        
+        // go through each word
+          for(let i = 0; i < words.length; i++) {
+          let word = words[i];
+            
+            // randomly pick 1 or 2 
+            let remove = Math.random() < 0.5 ? 1 : 2;
+            
+            // make sure we dont remove more letters than exist (e.g the letter I)
+            if(remove > word.length) {
+            remove = 1;
+        }
+            
+            // add dind + rest of word
+          result.push("dind" + word.slice(remove));
+        }
+        
+        // join back together and show our glorious dinde creation
+        box.innerText = result.join(' ');
+    }
+    
+    function copyOutput() {
+        let outputText = document.getElementById('output').innerText;
+       let msg = document.getElementById('output');
+        if(outputText) {
+            navigator.clipboard.writeText(outputText);
+          msg.innerText = ('you hvave copy dinde');
+        }
+    }
+    </script>
+</body>
+</html>
